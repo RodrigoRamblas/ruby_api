@@ -2,7 +2,7 @@ Quando('executada a requisição de função GET para o serviço VRPAT') do
     @vrpat = vrpat.get_vrpat
 end
 
-Então('o atributo {string} é retornado no corpo da requisição') do |atributo|
+Então(/^o atributo "([^"]*)" é retornado no corpo da requisição$/) do |atributo|
     expect(@vrpat.code).to eq(200)
     establishment = @vrpat["#{atributo}"]
     expect(establishment).to be_truthy
